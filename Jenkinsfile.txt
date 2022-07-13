@@ -4,7 +4,7 @@ pipeline {
 stages {
 	stage(create) {
 	            steps{
-			    withKubeConfig([credentialsId: 'efe3402c-08e7-4c01-9366-bdcfe1ea995c',
+			    withKubeConfig([credentialsId: 'kubeconfig',
 					    serverUrl: 'https://192.168.49.2:8443',
 					    contextName: 'minikube',
 					    clusterName: 'minikube',
