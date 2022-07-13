@@ -10,7 +10,7 @@ stages {
 					    clusterName: 'minikube',
 					    namespace: 'default'
 					    ]) 
-			      kubectl create -f nginx.yaml
+			      sh 'kubectl create -f nginx.yaml'
 			 }
 	    }
   	}
