@@ -1,0 +1,18 @@
+pipeline {
+	agent any
+	tools {
+        git 'latest'
+        jdk 'java17'
+    }
+stage(create) {
+    withKubeConfig([credentialsId: 'minikube',
+                    caCertificate: '<C:\Users\Alessandra\ca.crt>',
+                    serverUrl: 'https://192.168.49.2:8443',
+                    contextName: 'minikube',
+                    clusterName: 'minikube',
+                    namespace: 'default'
+                    ]) 
+      kubectl create -f nginx.yaml
+    }
+  }
+}
