@@ -3,14 +3,15 @@ pipeline {
 	tools {
         git 'latest'
 	}
-stage(create) {
-    withKubeConfig([credentialsId: 'efe3402c-08e7-4c01-9366-bdcfe1ea995c',
-                    serverUrl: 'https://192.168.49.2:8443',
-                    contextName: 'minikube',
-                    clusterName: 'minikube',
-                    namespace: 'default'
-                    ]) 
-      kubectl create -f nginx.yaml
-    }
-  }
+stages {
+	stage(create) {
+	    withKubeConfig([credentialsId: 'efe3402c-08e7-4c01-9366-bdcfe1ea995c',
+			    serverUrl: 'https://192.168.49.2:8443',
+			    contextName: 'minikube',
+			    clusterName: 'minikube',
+			    namespace: 'default'
+			    ]) 
+	      kubectl create -f nginx.yaml
+	    }
+  	}
 }
